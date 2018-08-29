@@ -48,11 +48,10 @@ bool MET::startRTC(Stream &out){
   if (!RTC.begin()) {
     out.println("!!!RTC failed!!!");
     return false;
-  }else{
-    RTC.adjust(DateTime(F(__DATE__), F(__TIME__)));
   }
   if (! RTC.isrunning()) {
     out.println("RTC is NOT running!");
+	RTC.adjust(DateTime(F(__DATE__), F(__TIME__)));
     return false;
   }else{
     out.println("RTC initialised");
